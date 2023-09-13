@@ -22,6 +22,10 @@ class Types::AuthorType < Types::BaseObject
   def full_name
     "#{object.first_name} #{object.last_name}"
   end
+
+  def authorized?(object, context)
+    !object.is_alive?
+  end
 end
 
 class Types::AuthorInputType < GraphQL::Schema::InputObject
